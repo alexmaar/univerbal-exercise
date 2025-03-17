@@ -1,4 +1,5 @@
 import { User } from 'domain/user';
+import * as path from 'path';
 
 import express from 'express';
 
@@ -13,6 +14,8 @@ const sleep = async (ms: number) =>
   });
 
 const app = express();
+
+app.use(express.static(path.join(__dirname, 'img')));
 
 app.use(corsConfig);
 
@@ -29,12 +32,12 @@ app.get('/movies', (req, res) => {
   res.json(moviesData.movies);
 });
 
-app.get('/movies/:movieId', (req, res) => {
-  res.json(moviesData.movies.find((it) => it.id === req.params.movieId));
+app.get('/movies/:movieId/poster', (req, res) => {
+  res.json({ url: req.url + '/img/poster.jpg' });
 });
 
-app.get('/tv-series/:movieId/poster', (req, res) => {
-  res.json({ url: req.url + '/img/poster.jpg' });
+app.get('/movies/:movieId', (req, res) => {
+  res.json(moviesData.movies.find((it) => it.id === req.params.movieId));
 });
 
 app.get('/tv-series/recommended', async (req, res) => {
