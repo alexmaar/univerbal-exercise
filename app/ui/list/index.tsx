@@ -18,7 +18,7 @@ type ListProps = {
 export function List({ style, data }: ListProps): ReactNode {
   return (
     <FlatList
-      style={style}
+      style={[styles.list, style]}
       data={data}
       keyExtractor={(it) => it.id}
       renderItem={(it) => {
@@ -30,6 +30,7 @@ export function List({ style, data }: ListProps): ReactNode {
           />
         );
       }}
+      contentContainerStyle={styles.listContent}
     />
   );
 }
@@ -46,7 +47,9 @@ function ListEntry({ style, title, rating }: ListEntryProps): ReactNode {
 
   return (
     <View style={[styles.root, style]}>
-      <Text>{title}</Text>
+      <Text style={styles.title} numberOfLines={2}>
+        {title}
+      </Text>
       <Rating value={rating} />
     </View>
   );
@@ -54,11 +57,37 @@ function ListEntry({ style, title, rating }: ListEntryProps): ReactNode {
 
 const getListEntryStyle = (isHighlighted: boolean) => {
   return StyleSheet.create({
-    root: isHighlighted
-      ? {
-          padding: 12,
-          backgroundColor: 'gold',
-        }
-      : { padding: 12 },
+    root: {
+      padding: 16,
+      backgroundColor: isHighlighted ? '#fff9e6' : '#ffffff',
+      borderRadius: 12,
+      marginBottom: 12,
+      // iOS shadow
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowOpacity: 0.1,
+      shadowRadius: 4,
+      // Android shadow
+      elevation: 3,
+    },
+    title: {
+      fontSize: 16,
+      fontWeight: '600',
+      color: '#333333',
+      marginBottom: 8,
+    },
   });
 };
+
+const styles = StyleSheet.create({
+  list: {
+    flex: 1,
+  },
+  listContent: {
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+  },
+});

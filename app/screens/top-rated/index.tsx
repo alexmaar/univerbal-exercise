@@ -37,11 +37,11 @@ export default function TopRatedScreen(): ReactNode {
     return (
       <ScrollView style={styles.root}>
         {/* movies */}
-        <Text style={styles.title}>Top rated movies</Text>
+        <Text style={styles.title}>Top Rated Movies</Text>
         <List data={topRatedMoviesLoadable.data} style={{ marginBottom: 40 }} />
 
         {/* tv series */}
-        <Text style={styles.title}>Top rated tv series</Text>
+        <Text style={styles.title}>Top Rated TV Series</Text>
         <List data={tvSeres} />
       </ScrollView>
     );
@@ -50,11 +50,15 @@ export default function TopRatedScreen(): ReactNode {
 
 const styles = StyleSheet.create({
   root: {
-    display: 'flex',
-    flexDirection: 'column',
+    flex: 1,
+    backgroundColor: '#f8f8f8',
   },
-
   title: {
+    fontSize: 28,
+    fontWeight: '700',
+    letterSpacing: 0.5,
     marginBottom: 24,
+    paddingHorizontal: 16,
+    color: '#1a1a1a',
   },
 });
