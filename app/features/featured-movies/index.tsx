@@ -26,7 +26,12 @@ export function FeaturedMovies({ style }: Props): JSX.Element | null {
       return (
         <View style={[styles.root, style]}>
           <Text style={styles.title}>Featured Movies</Text>
-          <ScrollView horizontal style={styles.list}>
+          <ScrollView
+            horizontal
+            style={styles.list}
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.listContent}
+          >
             {stateLoadable.data.map((it, index) => (
               <View key={index} style={styles.item}>
                 <Poster
@@ -36,7 +41,9 @@ export function FeaturedMovies({ style }: Props): JSX.Element | null {
                   title={it.title}
                   onFavoritePress={undefined}
                 />
-                <Text>{it.title}</Text>
+                <Text style={styles.movieTitle} numberOfLines={2}>
+                  {it.title}
+                </Text>
               </View>
             ))}
           </ScrollView>
@@ -49,12 +56,39 @@ export function FeaturedMovies({ style }: Props): JSX.Element | null {
 const styles = StyleSheet.create({
   root: { flex: 1 },
   title: {
+    fontSize: 28,
+    fontWeight: '700',
+    letterSpacing: 0.5,
     marginBottom: 20,
+    paddingHorizontal: 16,
+    color: '#1a1a1a',
   },
   list: { flex: 1 },
+  listContent: {
+    paddingHorizontal: 16,
+  },
   item: {
-    marginLeft: 6,
+    marginRight: 16,
     width: 120,
     height: 200,
+    backgroundColor: '#ffffff',
+    borderRadius: 8,
+    // iOS shadow
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    // Android shadow
+    elevation: 3,
+  },
+  movieTitle: {
+    fontSize: 14,
+    fontWeight: '500',
+    marginTop: 8,
+    textAlign: 'center',
+    color: '#333333',
   },
 });
