@@ -29,22 +29,47 @@ export default function App() {
     <NavigationContainer>
       <StatusBar style="auto" animated />
 
-      <Tab.Navigator initialRouteName={appRouteNames.root}>
+      <Tab.Navigator
+        initialRouteName={appRouteNames.root}
+        screenOptions={{
+          tabBarStyle: {
+            backgroundColor: '#f5f5f5',
+            height: 60,
+            paddingBottom: 8,
+            paddingTop: 5,
+            borderTopWidth: 1,
+            borderTopColor: '#e0e0e0',
+            elevation: 8,
+            shadowColor: '#000',
+            shadowOffset: { width: 0, height: -2 },
+            shadowOpacity: 0.1,
+            shadowRadius: 3,
+          },
+          tabBarActiveTintColor: '#1976d2',
+          tabBarInactiveTintColor: '#757575',
+        }}
+      >
         <Tab.Screen
           name="tab-home"
           component={HomeScreen}
           options={{
-            tabBarLabel: () => <Text>Home</Text>,
-            tabBarIcon: () => <FontAwesome size={24} name="home" />,
+            tabBarLabel: ({ color }) => (
+              <Text style={{ color, fontSize: 12 }}>Home</Text>
+            ),
+            tabBarIcon: ({ color }) => (
+              <FontAwesome size={24} name="home" color={color} />
+            ),
           }}
         />
         <Tab.Screen
           name="tab-top-rated"
           component={TopRatedScreen}
           options={{
-            tabBarLabel: () => <Text>Top rated</Text>,
-            tabBarIcon: () => (
-              <FontAwesome6 name="ranking-star" size={24} color="black" />
+            tabBarLabel: ({ color }) => (
+              <Text style={{ color, fontSize: 12 }}>Top rated</Text>
+            ),
+            tabBarIcon: ({ color }) => (
+              <FontAwesome6 name="ranking-star" size={24} color={color} />
             ),
           }}
         />
@@ -52,8 +77,12 @@ export default function App() {
           name="tab-favorites"
           component={FavoritesScreen}
           options={{
-            tabBarLabel: () => <Text>Favorites</Text>,
-            tabBarIcon: () => <FontAwesome size={24} name="heart" />,
+            tabBarLabel: ({ color }) => (
+              <Text style={{ color, fontSize: 12 }}>Favorites</Text>
+            ),
+            tabBarIcon: ({ color }) => (
+              <FontAwesome size={24} name="heart" color={color} />
+            ),
           }}
         />
       </Tab.Navigator>
