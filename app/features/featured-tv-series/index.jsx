@@ -1,4 +1,5 @@
-import { useAtom } from 'jotai';
+import { useAtomValue } from 'jotai';
+import { loadable } from 'jotai/utils';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 
 import { featuredTvSeries$ } from './state';
@@ -7,15 +8,14 @@ import { Poster } from '@/ui/poster';
 import { Rating } from '@/ui/rating';
 
 export function FeaturedTvSeries() {
-  const [featuredTvSeries] = useAtom(featuredTvSeries$);
-
+  const featuredTvSeriesLoadable = useAtomValue(loadable(featuredTvSeries$));
   return (
     <View style={featuredTvSeriesStyles.root}>
       <Text style={featuredTvSeriesStyles.title}>Featured Tv Series</Text>
       <FlatList
         style={featuredTvSeriesStyles.list}
         horizontal
-        data={featuredTvSeries}
+        data={featuredTvSeriesLoadable.data}
         keyExtractor={(it) => it.id}
         renderItem={(it) => {
           return (
