@@ -28,14 +28,16 @@ export function FeaturedMovies({ style }: Props): JSX.Element | null {
           <Text style={styles.title}>Featured Movies</Text>
           <ScrollView horizontal style={styles.list}>
             {stateLoadable.data.map((it, index) => (
-              <Poster
-                key={index}
-                //TODO customize by movie ID
-                src={new URL(`/poster.jpg`, apiUrl).href}
-                isFavorite
-                title={it.title}
-                onFavoritePress={undefined}
-              />
+              <View key={index} style={styles.item}>
+                <Poster
+                  //TODO customize by movie ID
+                  src={new URL(`/poster.jpg`, apiUrl).href}
+                  isFavorite
+                  title={it.title}
+                  onFavoritePress={undefined}
+                />
+                <Text>{it.title}</Text>
+              </View>
             ))}
           </ScrollView>
         </View>
@@ -50,4 +52,9 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   list: { flex: 1 },
+  item: {
+    marginLeft: 6,
+    width: 120,
+    height: 200,
+  },
 });

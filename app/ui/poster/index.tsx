@@ -42,15 +42,13 @@ export function Poster(props: PosterProps) {
         resizeMode="contain"
         style={styles.image}
       />
-      <Text>{props.title}</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   wrapper: {
-    marginLeft: 6,
-    height: 200,
+    height: 180,
     width: 100,
   },
   button: {
