@@ -1,13 +1,16 @@
 import { useAtomValue } from 'jotai';
 import { loadable } from 'jotai/utils';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, ViewStyle, StyleSheet, Text, View } from 'react-native';
 
 import { movies$ } from './state';
 
 import { Poster } from '@/ui/poster';
+import { createAPIUrl } from '@/utils';
+
+const apiUrl = createAPIUrl();
 
 type Props = {
-  style?: any;
+  style?: ViewStyle;
 };
 
 export function FeaturedMovies({ style }: Props): JSX.Element | null {
@@ -27,9 +30,11 @@ export function FeaturedMovies({ style }: Props): JSX.Element | null {
             {stateLoadable.data.map((it, index) => (
               <Poster
                 key={index}
+                //TODO customize by movie ID
+                src={new URL(`/poster.jpg`, apiUrl).href}
                 isFavorite
                 title={it.title}
-                onFavoritePress={undefined as any}
+                onFavoritePress={undefined}
               />
             ))}
           </ScrollView>
@@ -40,11 +45,9 @@ export function FeaturedMovies({ style }: Props): JSX.Element | null {
 }
 
 const styles = StyleSheet.create({
-  root: {},
-
+  root: { flex: 1 },
   title: {
     marginBottom: 20,
   },
-
-  list: {},
+  list: { flex: 1 },
 });

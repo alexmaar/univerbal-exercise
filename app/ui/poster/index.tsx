@@ -5,19 +5,20 @@ import {
   Pressable,
   StyleProp,
   ViewStyle,
+  Text,
 } from 'react-native';
 
 type PosterProps = {
   title: string;
   src: string;
-  onFavoritePress: () => void;
+  onFavoritePress?: () => void;
   isFavorite: boolean;
   styles?: StyleProp<ViewStyle>;
 };
 
 export function Poster(props: PosterProps) {
   return (
-    <View style={[styles.wrapper, styles.wrapper]}>
+    <View style={[styles.wrapper]}>
       {props.onFavoritePress && (
         <Pressable
           style={[
@@ -30,26 +31,42 @@ export function Poster(props: PosterProps) {
           ]}
           onPress={props.onFavoritePress}
         >
-          {props.isFavorite ? '-' : '+'}
+          <Text>{props.isFavorite ? '-' : '+'}</Text>
         </Pressable>
       )}
-      <Image alt={props.title} src={props.src} />
+      <Image
+        alt={props.title}
+        source={{
+          uri: props.src,
+        }}
+        resizeMode="contain"
+        style={styles.image}
+      />
+      <Text>{props.title}</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  wrapper: {},
+  wrapper: {
+    marginLeft: 6,
+    height: 200,
+    width: 100,
+  },
   button: {
     borderWidth: 2,
     borderColor: 'yellow',
     position: 'absolute',
-    top: 10,
+    top: 0,
     right: 10,
     width: 20,
     height: 20,
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  image: {
+    width: '100%',
+    height: '100%',
   },
 });

@@ -8,7 +8,7 @@ import { z } from 'zod';
 
 import { appRouteNames } from '@/routes';
 import FavoritesScreen from '@/screens/favorites';
-import HomeScreen from '@/screens/home';
+import { HomeScreen } from '@/screens/home';
 import TopRatedScreen from '@/screens/top-rated';
 
 const Tab = createBottomTabNavigator();
