@@ -6,6 +6,9 @@ import TopRatedScreen from '@/screens/top-rated';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { appRouteNames } from '@/routes';
 import { z } from 'zod';
+import { Text } from 'react-native';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 
 const Tab = createBottomTabNavigator();
 
@@ -29,17 +32,28 @@ export default function App() {
         <Tab.Screen
           name="tab-home"
           component={HomeScreen}
-          options={{ tabBarLabel: () => null }}
+          options={{
+            tabBarLabel: () => <Text>Home</Text>,
+            tabBarIcon: () => <FontAwesome size={24} name="home" />,
+          }}
         />
         <Tab.Screen
           name="tab-top-rated"
           component={TopRatedScreen}
-          options={{ tabBarLabel: () => null }}
+          options={{
+            tabBarLabel: () => <Text>Top rated</Text>,
+            tabBarIcon: () => (
+              <FontAwesome6 name="ranking-star" size={24} color="black" />
+            ),
+          }}
         />
         <Tab.Screen
           name="tab-favorites"
           component={FavoritesScreen}
-          options={{ tabBarLabel: () => null }}
+          options={{
+            tabBarLabel: () => <Text>Favorites</Text>,
+            tabBarIcon: () => <FontAwesome size={24} name="heart" />,
+          }}
         />
       </Tab.Navigator>
     </NavigationContainer>
