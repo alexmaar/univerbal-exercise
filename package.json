@@ -9,6 +9,7 @@
     "ios": "EXPO_PUBLIC_SERVER_IP=$(./scripts/local-ip.sh) EXPO_PUBLIC_SERVER_PORT=3003 expo start --ios",
     "check:format": "prettier --check ./",
     "check:lint": "eslint ./",
+    "fix:lint": "eslint --fix ./",
     "fix:format": "prettier --write ./"
   },
   "dependencies": {

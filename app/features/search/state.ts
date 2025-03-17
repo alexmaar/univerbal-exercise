@@ -1,4 +1,5 @@
 import { atom } from 'jotai';
+
 import { findMoviesMatchingQuery } from '@/infrastructure/repositories/movie';
 import { findTvSeriesMatchingQuery } from '@/infrastructure/repositories/tv-series';
 

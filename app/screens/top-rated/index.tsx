@@ -1,11 +1,14 @@
-import { List } from '@/ui/list';
+import { TVSeries } from 'domain/tv-series';
+
 import { useAtom } from 'jotai';
 import { loadable } from 'jotai/utils';
 import { useEffect, useState, type ReactNode } from 'react';
 import { Text, StyleSheet, ScrollView } from 'react-native';
+
 import { topRatedMovies$ } from './state';
-import { TVSeries } from 'domain/tv-series';
+
 import { getTopRatedTvSeriesQuery } from '@/infrastructure/repositories/tv-series';
+import { List } from '@/ui/list';
 import { Loader } from '@/ui/loader';
 
 // Displays movies with rating above 75%

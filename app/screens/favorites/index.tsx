@@ -1,6 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { type ReactNode } from 'react';
 import { View, Text } from 'react-native';
+
 import MovieScreen from '@/screens/movie';
 import TvSeriesScreen from '@/screens/tv-series';
 

@@ -1,8 +1,8 @@
-import { FeaturedMovies } from '@/features/featured-movies';
-import { FeaturedTvSeries } from '@/features/featured-tv-series';
-import { Search } from '@/features/search';
-import { Suspense, type ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import { View } from 'react-native';
+
+import { FeaturedMovies } from '@/features/featured-movies';
+import { Search } from '@/features/search';
 
 export default function HomeScreen(): ReactNode {
   return (

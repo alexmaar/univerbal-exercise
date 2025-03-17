@@ -1,3 +1,5 @@
+import { useAtom, useAtomValue } from 'jotai';
+import { loadable } from 'jotai/utils';
 import React, { ReactNode, useRef } from 'react';
 import {
   StyleProp,
@@ -7,9 +9,8 @@ import {
   ViewStyle,
   Text,
 } from 'react-native';
+
 import { inputValue$, suggestions$ } from './state';
-import { useAtom, useAtomValue } from 'jotai';
-import { loadable } from 'jotai/utils';
 
 export type SearchProps = {
   style?: StyleProp<ViewStyle>;

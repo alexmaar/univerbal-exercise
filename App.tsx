@@ -1,14 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
-import { NavigationContainer } from '@react-navigation/native';
-import HomeScreen from '@/screens/home';
-import FavoritesScreen from '@/screens/favorites';
-import TopRatedScreen from '@/screens/top-rated';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { appRouteNames } from '@/routes';
-import { z } from 'zod';
-import { Text } from 'react-native';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import { StatusBar } from 'expo-status-bar';
+import { Text } from 'react-native';
+import { z } from 'zod';
+
+import { appRouteNames } from '@/routes';
+import FavoritesScreen from '@/screens/favorites';
+import HomeScreen from '@/screens/home';
+import TopRatedScreen from '@/screens/top-rated';
 
 const Tab = createBottomTabNavigator();
 

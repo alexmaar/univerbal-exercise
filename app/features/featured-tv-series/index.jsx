@@ -1,8 +1,9 @@
-import { Poster } from '@/ui/poster';
-import { FlatList, ScrollView, StyleSheet, Text, View } from 'react-native';
-import { featuredTvSeries$ } from './state';
 import { useAtom } from 'jotai';
-import { useEffect } from 'react';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
+
+import { featuredTvSeries$ } from './state';
+
+import { Poster } from '@/ui/poster';
 import { Rating } from '@/ui/rating';
 
 export function FeaturedTvSeries() {

@@ -1,6 +1,8 @@
-import { createAPIUrl } from '@/utils';
 import { Movie } from 'domain/movie';
+
 import { type User } from '../../../domain/user';
+
+import { createAPIUrl } from '@/utils';
 
 const apiUrl = createAPIUrl();
 
