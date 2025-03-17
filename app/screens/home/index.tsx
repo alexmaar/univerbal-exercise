@@ -2,6 +2,7 @@ import { type ReactNode } from 'react';
 import { View } from 'react-native';
 
 import { FeaturedMovies } from '@/features/featured-movies';
+import { FeaturedTvSeries } from '@/features/featured-tv-series';
 import { Search } from '@/features/search';
 
 export function HomeScreen(): ReactNode {
@@ -20,7 +21,7 @@ export function HomeScreen(): ReactNode {
           marginBottom: 40,
         }}
       />
-      {/* <FeaturedTvSeries /> */}
+      <FeaturedTvSeries />
     </View>
   );
 }

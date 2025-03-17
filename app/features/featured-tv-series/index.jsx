@@ -18,7 +18,6 @@ export function FeaturedTvSeries() {
         data={featuredTvSeries}
         keyExtractor={(it) => it.id}
         renderItem={(it) => {
-          console.log(it.item.rating);
           return (
             <Entry
               title={it.item.title}
@@ -47,17 +46,15 @@ const featuredTvSeriesStyles = StyleSheet.create({
 });
 
 function Entry(props) {
-  console.log(props.title);
   return (
     <View style={entryStyles.root}>
       <View style={entryStyles.overlay}>
         <Text style={entryStyles.text}>{props.title}</Text>
-        <Rating style={entryStyles.text} value={props.rating} />
+        <Rating textStyle={entryStyles.text} value={props.rating} />
         <Text style={entryStyles.text}>seasons: {props.seasons.length}</Text>
       </View>
       <Poster
         title={props.title}
-        style={entryStyles.poster}
         src={
           'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/2560px-Image_created_with_a_mobile_phone.png'
         }
@@ -69,13 +66,13 @@ function Entry(props) {
 const entryStyles = StyleSheet.create({
   root: {
     height: 200,
+    width: 120,
     aspectRatio: 1 / 2,
     backgroundColor: 'blue',
     borderWidth: 2,
     borderColor: 'yellow',
     position: 'relative',
   },
-
   overlay: {
     position: 'absolute',
     backgroundColor: 'black',
@@ -85,7 +82,6 @@ const entryStyles = StyleSheet.create({
     bottom: 0,
     justifyContent: 'flex-start',
   },
-
   text: {
     color: 'white',
   },

@@ -18,7 +18,7 @@ type PosterProps = {
 
 export function Poster(props: PosterProps) {
   return (
-    <View style={[styles.wrapper]}>
+    <View>
       {props.onFavoritePress && (
         <Pressable
           style={[
@@ -47,10 +47,6 @@ export function Poster(props: PosterProps) {
 }
 
 const styles = StyleSheet.create({
-  wrapper: {
-    height: 180,
-    width: 100,
-  },
   button: {
     borderWidth: 2,
     borderColor: 'yellow',

@@ -1,9 +1,15 @@
-import { Text, View } from 'react-native';
+import { Text, View, TextStyle } from 'react-native';
 
-export function Rating({ value, max = 100 }: any) {
+type Props = {
+  value: number;
+  max: number;
+  textStyle: TextStyle;
+};
+
+export function Rating({ value, max = 100, textStyle }: Props) {
   return (
     <View>
-      <Text>{(value / max) * 100}%</Text>
+      <Text style={textStyle}>{(value / max) * 100}%</Text>
     </View>
   );
 }
