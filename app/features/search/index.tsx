@@ -8,6 +8,7 @@ import {
   View,
   ViewStyle,
   Text,
+  TouchableOpacity,
 } from 'react-native';
 
 import { inputValue$, suggestions$ } from './state';
@@ -23,22 +24,32 @@ export function Search({ style }: SearchProps): ReactNode {
 
   return (
     <View style={[searchStyles.root, style]}>
-      <TextInput
-        ref={inputRef}
-        style={{ height: 40, borderColor: 'red', borderWidth: 2 }}
-        placeholder="type to search..."
-        onChangeText={setInputValue}
-        value={inputValue}
-      />
+      <View style={searchStyles.inputContainer}>
+        <TextInput
+          ref={inputRef}
+          style={searchStyles.input}
+          placeholder="Search movies and TV shows..."
+          placeholderTextColor="#999999"
+          onChangeText={setInputValue}
+          value={inputValue}
+        />
+      </View>
 
       {!inputValue ? null : (
         <View style={searchStyles.suggestions}>
           {suggestions.state !== 'hasData'
             ? null
             : suggestions.data.map((it) => (
-                <View style={searchStyles.suggestionEntry}>
-                  <Text>{it.title}</Text>
-                </View>
+                <TouchableOpacity
+                  key={it.id}
+                  style={searchStyles.suggestionEntry}
+                  onPress={() => {
+                    setInputValue(it.title);
+                    inputRef.current?.blur();
+                  }}
+                >
+                  <Text style={searchStyles.suggestionText}>{it.title}</Text>
+                </TouchableOpacity>
               ))}
         </View>
       )}
@@ -47,19 +58,59 @@ export function Search({ style }: SearchProps): ReactNode {
 }
 
 const searchStyles = StyleSheet.create({
-  root: {},
-
-  input: {},
-
-  suggestions: {
+  root: {
     width: '100%',
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-    backgroundColor: 'white',
-    borderWidth: 2,
-    borderColor: 'yellow',
+    position: 'relative',
   },
-
-  suggestionEntry: {},
+  inputContainer: {
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+  },
+  input: {
+    height: 48,
+    backgroundColor: '#f5f5f5',
+    borderRadius: 24,
+    paddingHorizontal: 20,
+    fontSize: 16,
+    color: '#333333',
+    // iOS shadow
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    // Android shadow
+    elevation: 3,
+  },
+  suggestions: {
+    position: 'absolute',
+    top: 64,
+    left: 16,
+    right: 16,
+    backgroundColor: '#ffffff',
+    borderRadius: 12,
+    marginTop: 4,
+    // iOS shadow
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    // Android shadow
+    elevation: 5,
+    zIndex: 1000,
+  },
+  suggestionEntry: {
+    padding: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: '#f0f0f0',
+  },
+  suggestionText: {
+    fontSize: 16,
+    color: '#333333',
+  },
 });
